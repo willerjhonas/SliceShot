@@ -1,0 +1,45 @@
+{
+  "name": "sliceshot",
+  "version": "1.0.0",
+  "description": "Ferramenta para corte e conversão de imagens/PDFs para Figma",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "figma-slicer": "node src/figma_slicer.js",
+    "renderer:dev": "cd renderer/corte-print-ui && npm run dev",
+    "renderer:build": "cd renderer/corte-print-ui && npm run build",
+    "electron:dev": "set NODE_ENV=development && electron .",
+    "dev": "concurrently \"npm run renderer:dev\" \"wait-on http://localhost:5173 && npm run electron:dev\"",
+    "build": "npm run renderer:build && electron-builder"
+  },
+  "build": {
+    "appId": "com.antigravity.corteprint",
+    "productName": "Corte Print",
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "electron/**",
+      "src/**",
+      "renderer/corte-print-ui/dist/**",
+      "node_modules/**",
+      "!node_modules/.cache"
+    ]
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdf-to-png-converter": "^3.14.0",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^36.1.0",
+    "electron-builder": "^26.0.12",
+    "wait-on": "^8.0.5"
+  }
+}

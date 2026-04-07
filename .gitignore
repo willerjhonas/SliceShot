@@ -1,0 +1,15 @@
+node_modules
+dist
+out
+.electron-builder
+.DS_Store
+*.log
+.env
+.vite
+.gemini
+.agents
+.agent
+brain
+data/projects
+renderer/corte-print-ui/node_modules
+renderer/corte-print-ui/dist
