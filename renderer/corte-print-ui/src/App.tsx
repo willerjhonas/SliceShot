@@ -46,6 +46,13 @@ function TitleBar() {
                         <svg width="10" height="1" viewBox="0 0 10 1"><path d="M0 0.5H10" stroke="currentColor" strokeWidth="1.5" /></svg>
                     </button>
                     <button
+                        onClick={() => window.electronAPI.maximize()}
+                        className="flex size-6 items-center justify-center rounded hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Maximizar"
+                    >
+                        <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><rect x="1" y="1" width="8" height="8" stroke="currentColor" strokeWidth="1.2" /></svg>
+                    </button>
+                    <button
                         onClick={() => window.electronAPI.close()}
                         className="flex size-6 items-center justify-center rounded hover:bg-destructive/20 text-muted-foreground hover:text-destructive transition-colors"
                         aria-label="Fechar"
@@ -309,7 +316,7 @@ export default function App() {
                                 <div className="flex gap-2">
                                     <Input
                                         id="output-dir"
-                                        placeholder="Mesma pasta do arquivo (padrão)"
+                                        placeholder="Pasta padrão de saída dos arquivos"
                                         value={outputDir}
                                         readOnly
                                         className="text-xs h-8"
