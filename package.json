@@ -2,12 +2,16 @@
   "name": "sliceshot",
   "version": "1.0.0",
   "description": "Ferramenta para corte e conversão de imagens/PDFs para Figma",
-  "main": "electron/main.js",
+  "main": "apps/electron/main.js",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "start": "node src/server.js",
-    "figma-slicer": "node src/figma_slicer.js",
-    "renderer:dev": "cd renderer/corte-print-ui && npm run dev",
-    "renderer:build": "cd renderer/corte-print-ui && npm run build",
+    "start": "node packages/core/slicer.js",
+    "figma-slicer": "node packages/core/slicer.js",
+    "renderer:dev": "cd apps/renderer && npm run dev",
+    "renderer:build": "cd apps/renderer && npm run build",
     "electron:dev": "set NODE_ENV=development && electron .",
     "dev": "concurrently \"npm run renderer:dev\" \"wait-on http://localhost:5173 && npm run electron:dev\"",
     "build": "npm run renderer:build && electron-builder"
@@ -24,9 +28,9 @@
       "allowToChangeInstallationDirectory": true
     },
     "files": [
-      "electron/**",
-      "src/**",
-      "renderer/corte-print-ui/dist/**",
+      "apps/electron/**",
+      "packages/core/**",
+      "apps/renderer/dist/**",
       "node_modules/**",
       "!node_modules/.cache"
     ]

@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog, shell } = require('electron');
 const path = require('path');
-const { sliceImage } = require('../src/figma_slicer');
+const { sliceImage } = require('../../packages/core/slicer');
 
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 const RENDERER_PORT = 5173;
@@ -27,7 +27,7 @@ function createWindow() {
         // mainWindow.webContents.openDevTools({ mode: 'detach' });
     } else {
         mainWindow.loadFile(
-            path.join(__dirname, '..', 'renderer', 'corte-print-ui', 'dist', 'index.html')
+            path.join(__dirname, '..', 'renderer', 'dist', 'index.html')
         );
     }
 }

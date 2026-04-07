@@ -65,7 +65,7 @@ if (require.main === module) {
     const outputArg = args[1];
     const maxPartHeightArg = args[2] ? parseInt(args[2]) : 4000;
 
-    const defaultInput = path.join(__dirname, '..', 'data', 'scrnli_pJ8hrN1Y3FY39b.pdf');
+    const defaultInput = path.join(__dirname, '..', '..', 'data', 'scrnli_pJ8hrN1Y3FY39b.pdf');
     const inputPath = inputArg ? (path.isAbsolute(inputArg) ? inputArg : path.join(process.cwd(), inputArg)) : defaultInput;
 
     const baseName = path.basename(inputPath, path.extname(inputPath));

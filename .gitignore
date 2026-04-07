@@ -11,5 +11,6 @@ out
 .agent
 brain
 data/projects
-renderer/corte-print-ui/node_modules
-renderer/corte-print-ui/dist
+apps/renderer/node_modules
+apps/renderer/dist
+packages/core/node_modules
