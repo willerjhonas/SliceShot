@@ -14,6 +14,7 @@ export interface SlicerResult {
 
 export interface ElectronAPI {
     minimize: () => void
+    maximize: () => void
     close: () => void
     openFile: () => Promise<string[] | null>
     openFolder: () => Promise<string | null>

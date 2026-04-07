@@ -316,7 +316,7 @@ export default function App() {
                                 <div className="flex gap-2">
                                     <Input
                                         id="output-dir"
-                                        placeholder="Pasta padrão de saída dos arquivos"
+                                        placeholder="Selecione a pasta de saída dos arquivos"
                                         value={outputDir}
                                         readOnly
                                         className="text-xs h-8"

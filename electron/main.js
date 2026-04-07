@@ -36,15 +36,26 @@ app.whenReady().then(createWindow);
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });
 
 // ── Janela ────────────────────────────────────────────────────────────────────
-ipcMain.on('window:minimize', () => mainWindow.minimize());
-ipcMain.on('window:maximize', () => {
-    if (mainWindow.isMaximized()) {
-        mainWindow.unmaximize();
-    } else {
-        mainWindow.maximize();
+ipcMain.on('window:minimize', (event) => {
+    const win = BrowserWindow.fromWebContents(event.sender);
+    if (win) win.minimize();
+});
+
+ipcMain.on('window:maximize', (event) => {
+    const win = BrowserWindow.fromWebContents(event.sender);
+    if (win) {
+        if (win.isMaximized()) {
+            win.unmaximize();
+        } else {
+            win.maximize();
+        }
     }
 });
-ipcMain.on('window:close', () => mainWindow.close());
+
+ipcMain.on('window:close', (event) => {
+    const win = BrowserWindow.fromWebContents(event.sender);
+    if (win) win.close();
+});
 
 // ── Diálogos ──────────────────────────────────────────────────────────────────
 ipcMain.handle('dialog:openFile', async () => {
